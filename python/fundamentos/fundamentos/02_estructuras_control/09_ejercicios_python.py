@@ -168,12 +168,43 @@ def inventario():
 
 #14. Generador de Lista de Compras
 #Usa un bucle while para que el usuario agregue artículos a una lista de compras. El proceso termina cuando el usuario escribe "terminar". Al final, muestra la lista ordenada alfabéticamente.
+def listaCompra():
+   lista = []
+   while True:
+      item = input("Articulo (o 'terminar')")
+      if item.lower() == "terminar":
+         break
+      lista.append(item)
+      print(f"Ordenada: {sorted(lista)}")
 
 #15. Análisis de Temperaturas
 #Solicita las temperaturas de los 7 días de la semana y guárdalas en un arreglo. Muestra:
 #El promedio semanal.
 #Cuántos días la temperatura fue superior a 25 grados.
 #El día con la temperatura más baja (asumiendo que el índice 0 es Lunes).
+
+def analisisTemperatura():
+   dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabádo", "Domingo"]
+   diaSuperior = []
+   total = 0
+   baja = 100
+   diaBaja = ""
+   cant = 0
+   
+   while cant < 7:
+      temps = float(input(f"Ingrese temperatura del dia {dias[cant]}: "))
+      total += temps
+
+      if temps < baja and temps < 25:
+         baja = temps 
+         diaBaja = dias[cant]
+      elif temps >25:
+         diaSuperior.append(dias[cant])
+         cant += 1 
+         print(f"El promedio de las temperaturas fue de {total / 7}")
+         print(f"El dia con la temperatura mas baja fue el dia {diaBaja} con {baja}°")
+         print(f"Los dias mas calurosos fueron {diaSuperior}")
+
 
 #Menu de navegación para ejercicios
 continuar = True
@@ -197,49 +228,49 @@ while continuar:
     opcion = input("---Elige una opción: (1-15) (0 para salir) =")
     if opcion =="1":  
         print("Ejecutando ejercicio 1: ")
-        print(numerosDinamicos())
+        numerosDinamicos()
     elif opcion == "2":
      print("Ejecutando ejercicio 2: ")
-     print(verificador_edad())
+     verificador_edad()
     elif opcion == "3":
      print("Ejecutando ejercicio 3: ")
-     print(aplicarDescuento())
+     aplicarDescuento()
     elif opcion == "4":
      print("Ejecutando ejercicio 4: ")
-     print(clasificadorNum())
+     clasificadorNum()
     elif opcion == "5":
      print("Ejecutando ejercicio 5: ")
-     print(tablaMultiplicar())
+     tablaMultiplicar()
     elif opcion == "6":
      print("Ejecutando ejercicio 6: ")
-     print(sumatoriaCentinela())
+     sumatoriaCentinela()
     elif opcion == "7":
      print("Ejecutando ejercicio 7: ")
-     print(contadorVocales())
+     contadorVocales()
     elif opcion == "8":
      print("Ejecutando ejercicio 8: ")
-     print(validacion())
+     validacion()
     elif opcion == "9":
      print("Ejecutando ejercicio 9: ")
-     print(registroNombres())
+     registroNombres()
     elif opcion == "10":
      print("Ejecutando ejercicio 10: ")
-     print(promedioNotas())
+     promedioNotas()
     elif opcion == "11":
      print("Ejecutando ejercicio 11: ")
-     print(filtroArreglos())
+     filtroArreglos()
     elif opcion == "12":
      print("Ejecutando ejercicio 12: ")
-     print(buscadorElemento())
+     buscadorElemento()
     elif opcion == "13":
      print("Ejecutando ejercicio 13: ")
-     print(inventario())
+     inventario()
     elif opcion == "14":
      print("Ejecutando ejercicio 14: ")
-     print()
+     listaCompra()
     elif opcion == "15":
      print("Ejecutando ejercicio 15: ")
-     print(buscadorElemento())
+     analisisTemperatura()
     elif opcion == "0":
      print("Saliendo...")
     continuar = False
