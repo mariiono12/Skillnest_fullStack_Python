@@ -6,12 +6,15 @@ usando ejemplos inspirados en videojuegos y situaciones atractivas.
 # 1. Generador de niveles
 # Imprime todos los niveles del 0 al 100 (incluyendo el 100).
 # (Tu código aquí)
-
-
+def generadorNiveles():
+ for i in range(0, 101):
+  print(i)
 # 2. Potenciadores de energía (Múltiplos de 2)
 # Imprime los números múltiplos de 2 desde 2 hasta 500 (incluyendo el 500).
 # (Tu código aquí)
-
+def potenciadoresEnergia():
+ for i in range(2, 502, 2):
+  print(i)
 
 # 3. Trampa de emojis
 # Recorre los puntos del 1 al 100.
@@ -19,7 +22,12 @@ usando ejemplos inspirados en videojuegos y situaciones atractivas.
 # - Si es divisible por 10, imprime ""
 # ¡Cuidado con la prioridad en tus condicionales!
 # (Tu código aquí)
-
+def trampaEmojis():
+ for i in range (1, 101):
+   if i % 5 == "0":
+     print(f"(i) 😂")
+   elif i % 10 == "0":
+     print(f"(i) 😂") 
 
 # 4. Suma colosal
 # Suma todos los números pares del 0 al 500,000 e imprime la suma total.
@@ -39,3 +47,6 @@ usando ejemplos inspirados en videojuegos y situaciones atractivas.
 
 # Ejemplo: si inicio = 3, fin = 10, y salto = 2
 # Se imprimiría: 4, 6, 8, 10
+
+#Menu de navegación para ejercicios
+
