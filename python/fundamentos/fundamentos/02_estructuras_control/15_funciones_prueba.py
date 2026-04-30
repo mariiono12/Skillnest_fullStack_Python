@@ -74,28 +74,88 @@ def listaNotas(notas):
         return"Error"   
 
     def ejercicio4():
-        largo = int(input("Cuantas notas va ingresar: "))
-        nota = []
+            largo = int(input("Cuantas notas va ingresar: "))
+            nota = []
     for i in range(largo):
         inp = float(input(f"Ingrese nota {i + 1}: "))
-        if inp != "":
+    if inp != "":
             nota.append(inp)
-            print(listaNotas(notas))
+            print(listaNotas(nota))
 
 """5.-Crear una función que reciba una lista de precios de productos y aplique un descuento del
 10%, mostrando el valor original y el nuevo valor."""
-def listaPrecios()
+def descuenta(valor):
+    sumaLista = sum(valor)
+    precioInicial = sumaLista
+    descuento = sumaLista * 0.1
+    precioFinal = precioInicial - descuento
+    print(f"El precio inicial del producto es: {precioInicial} y con descuento {precioFinal}")
+
+    def valores():
+        cantidadProductos = int(input("Ingrese la cantidad de productos que quiera: "))
+        listaPrecios = []
+        for i in range(cantidadProductos):
+            valorProducto = float(input("Ingrese el valor del producto: "))
+            listaPrecios.append(valorProducto)
+        descuento(listaPrecios)
+        valores()
 
 """6.-Crear una función que reciba un número entero y determine si es par o impar."""
-def numeroEntero()
+def parImpar(numero):
+    if numero % 2 == 0:
+        print(f"El número {numero} es Par")
+    elif numero % 3 ==0:
+        print(f"El número {numero} es Impar.")
+    else: 
+        print("Error")
+
+def recibirNum():
+    num = int(input("Ingrese un número: "))
+    parImpar(num)
+    recibirNum()
 
 """"7.-Crear una función que reciba una lista de edades y muestre cuántas personas son mayores
 de edad (18 años o más)."""
-def listaEdades()
+def edades(lista):
+    num = 0
+    for i in range(len(lista)):
+        if lista[i] >= 18:
+            num += 1
+    return num
+
+def personas():
+    edad = []
+    inp = int(input("Cuantas personas vas a ingresar hoy?: "))
+    for i in range(inp):
+        var = int(input(">>"))
+        if var != "":
+            edad.append(var)
+        else:
+            print("Por favor ingresar valor valido")
+    resultado = edades(edad)
+    print(f"Hay {resultado} personas mayores de edad")
+    personas()
+
+
 
 """8.-Crear una función que reciba una lista de palabras y permita buscar cuántas veces aparece
 una palabra específica ingresada por el usuario."""
-def listaPalabras()
+def vecesqueAparece(palabras):
+    buscar = input("ingrese la palabra que desea buscar: ")
+    vecesqueAparece = 0
+    for i in range(len(palabras)):
+        if buscar == palabras[i]:
+            vecesqueAparece += 1
+    print(f"La palabra {buscar} aparece {vecesqueAparece} en la lista. ")
+
+def recibirpalabras():
+    cantidad = int(input("Ingresa la cantidad de palabras: "))
+    listaPalabras = []
+    for i in range(cantidad):
+        palabras = input(f"{i+1}.")
+        listaPalabras.append(palabras)
+    vecesqueAparece(listaPalabras)    
+
 
 """9.-Crear una función que reciba una lista de números y genere una nueva lista que contenga
 únicamente los números positivos."""
