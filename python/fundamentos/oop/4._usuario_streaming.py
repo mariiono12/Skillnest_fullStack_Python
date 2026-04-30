@@ -16,76 +16,64 @@
 #Haz que el tercer usuario agregue tres títulos, los vea y cambie su suscripción dos veces.
 
 class UsuarioStreaming:
-   def __init__(self, nombre, email, suscripcion="Gratis"):
-       self.nombre = nombre
-       self.email = email
-       self.suscripcion = suscripcion
-       self.lista_reproduccion = []
+    def __init__(self, nombre, email, suscripcion="Gratis"):
+        self.nombre = nombre
+        self.email = email
+        self.suscripcion = suscripcion
+        self.lista_reproduccion = []
+
+    def agregar_a_lista(self, titulo):
+        self.lista_reproduccion.append(titulo)
+        print(f"{titulo} agregado")
+
+    def ver_contenido(self, titulo):
+        if titulo in self.lista_reproduccion:
+            print(f"Reproduciendo {titulo}")
+        else:
+            print(f"{titulo} no esta en tu lista")
+
+    def cambiar_suscripcion(self, nueva_suscripcion):
+        vieja = self.suscripcion
+        self.suscripcion = nueva_suscripcion
+        print(f"Suscripcion cambio de {vieja} a {nueva_suscripcion}")
+
+    def mostrar_info_usuario(self):
+        print(f"Nombre: {self.nombre}")
+        print(f"Email: {self.email}")
+        print(f"Suscripcion: {self.suscripcion}")
+        print(f"Mi lista: {self.lista_reproduccion if self.lista_reproduccion else 'Vacia'}")
 
 
-def agregar_a_lista(self, titulo):
-       self.lista_reproduccion.append(titulo)
-       input(f"Titulo '{titulo}' agregado")
-       """Agrega un contenido a la lista de reproducción del usuario."""
-       pass
 
+print("Crear 3 usuarios")
 
-def ver_contenido(self, titulo):
-       print(f"reproduciendo: {titulo} ")
-       """Simula que el usuario reproduce un contenido."""
-       pass
+u1 = UsuarioStreaming(input("Usuario 1 - Nombre: "), input("Email: "), input("Suscripcion (Gratis/Estandar/Premium): "))
+u2 = UsuarioStreaming(input("Usuario 2 - Nombre: "), input("Email: "), input("Suscripcion: "))
+u3 = UsuarioStreaming(input("Usuario 3 - Nombre: "), input("Email: "), input("Suscripcion: "))
 
-
-def cambiar_suscripcion(self, nueva_suscripcion):
-       self.suscripcion = nueva_suscripcion
-       print(f"Suscripcion cambiada a: {nueva_suscripcion}")
-       """Cambia el tipo de suscripción del usuario."""
-       pass
-
-
-def mostrar_info_usuario(self):
-       print(f"Usuario: {self.nombre} {self.email} {self.suscripcion}")
-       print(f"Lista: {self.lista_reproduccion}")
-       """Muestra la información del usuario y su lista de reproducción."""
-       pass
-   
-   #Todos los valores que se deban registrar debe ser con input
-   #Añadir un menu while para llamar a los métodos. 
-   #(Menú de selección)
-
-Usuarios = []
-for i in range(3):
-      print(f"Registro de usuario {i+1}")
-      nombre = input("Nombre: ")
-      correo = input("Email: ")
-      plan = input("Suscripción (Gratis, Estándar, Premium): ")
-
-      Usuarios.append(UsuarioStreaming(nombre, correo, plan))
-      
-
-u1 = UsuarioStreaming(input("Nombre U1: "), input("Email U1: "), input("Suscripción: "))
-u2 = UsuarioStreaming(input("Nombre U2: "), input("Email U2: "), input("Suscripción: "))
-u3 = UsuarioStreaming(input("Nombre U3: "), input("Email U3: "), input("Suscripción: "))
-
-
+# Usuario 1
 print(f"{u1.nombre}")
-u1.agregar_a_lista(input("título para agregar: "))
-u1.ver_contenido(input("Título a ver: "))
-u1.ver_contenido(input("Otro título a ver: "))
-
-print(f"{u2.nombre}")
-u2.agregar_a_lista(input("Título para agregar: "))
-u2.ver_contenido(input("Título a ver: "))
-u2.cambiar_suscripcion(input("Nueva suscripción: "))
-
-print(f"{u3.nombre}")
-u3.agregar_a_lista(input("Título 1 para agregar: "))
-
-u3.ver_contenido(input("Ver título 1: "))
-
-u3.cambiar_suscripcion(input("Primer cambio de suscripción: "))
-u3.cambiar_suscripcion(input("Segundo cambio de suscripción: "))
-
+u1.agregar_a_lista(input("Titulo 1: "))
+u1.agregar_a_lista(input("Titulo 2: "))
+u1.ver_contenido(input("Que quieres ver?: "))
+u1.ver_contenido(input("Que mas quieres ver?: "))
 u1.mostrar_info_usuario()
+
+# Usuario 2
+print(f"{u2.nombre}")
+u2.agregar_a_lista(input("Titulo: "))
+u2.ver_contenido(input("Que quieres ver?: "))
+u2.cambiar_suscripcion(input("Nueva suscripcion: "))
 u2.mostrar_info_usuario()
+
+# Usuario 3
+print(f"{u3.nombre}")
+u3.agregar_a_lista(input("Titulo 1: "))
+u3.agregar_a_lista(input("Titulo 2: "))
+u3.agregar_a_lista(input("Titulo 3: "))
+u3.ver_contenido(input("Primer contenido a ver: "))
+u3.ver_contenido(input("Segundo contenido: "))
+u3.ver_contenido(input("Tercer contenido: "))
+u3.cambiar_suscripcion(input("Primer cambio de suscripcion: "))
+u3.cambiar_suscripcion(input("Segundo cambio: "))
 u3.mostrar_info_usuario()
