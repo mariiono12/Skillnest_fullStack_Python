@@ -1,4 +1,6 @@
+import os
 #Evaluación Python funciones
+
 '''Crear una función que reciba una lista de números y determine si todos los números son positivos.
  Si encuentra al menos un número negativo, debe indicarlo y detener el recorrido.
  (Sergio Bustos)
@@ -19,23 +21,6 @@ def Revisar():
         lista1.append(numeros)
      
     print(positivo(lista1))
-
-Revisar()
-
-
-            
-
-
-        
-
-  
-
-
-
-
-
-
-
 
 
 ''' 6- Crear una función que reciba una lista de edades y clasifique a las personas en tres grupos: menores de edad, adultos y adultos mayores (60+).
@@ -66,12 +51,11 @@ def resultado_ejercicio():
     print(f"Adultos: {adultos}")
     print(f"Adultos mayores: {adultos_mayores}")
 
-resultado_ejercicio()
 
 
-#Crear una función que reciba una lista de notas (decimales) y genere dos listas: una con aprobados (≥ 4.0) y otra con reprobados (< 4.0).
-#Debe mostrar ambas listas y la cantidad de estudiantes en cada grupo.
-(Fabrizio Ortiz Mendieta)
+# 3. Crear una función que reciba una lista de notas (decimales) y genere dos listas: una con aprobados (≥ 4.0) y otra con reprobados (< 4.0).
+# Debe mostrar ambas listas y la cantidad de estudiantes en cada grupo.
+# (Fabrizio Ortiz Mendieta)
 
 def alumnosnotas(notas):
     aprobados = []
@@ -102,13 +86,8 @@ def aprobadosreprobados():
                 print("Ingrese un número decimal del 1.0 al 7.0")
     alumnosnotas(notas)
 
-aprobadosreprobados()
-
-
-
-
-
-
+def limpiar_consola():
+    os.system('cls')
 
 continuar = True
 while continuar:
@@ -126,3 +105,10 @@ while continuar:
     elif opcion == "3":
         print("\nEjecutando ejercicio 3: ")
         aprobadosreprobados()
+    elif opcion == "0":
+        print("Saliendo...")
+        continuar = False
+    else:
+        print("Opcion no valida, intenta otra vez")
+
+
