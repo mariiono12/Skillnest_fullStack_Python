@@ -20,3 +20,5 @@ def ver(campo):
 mostrar()
 ver("nombre")
 ver("puntaje")
+
+

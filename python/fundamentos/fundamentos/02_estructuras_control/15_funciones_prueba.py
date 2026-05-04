@@ -159,12 +159,12 @@ def recibirpalabras():
 
 """9.-Crear una función que reciba una lista de números y genere una nueva lista que contenga
 únicamente los números positivos."""
-def listaPositivos()
+def listaPositivos():
 
 
 """10.-Crear una función que reciba una lista de productos (utilizando diccionarios con nombre
 y stock) y muestre cuáles tienen un stock menor a 5 unidades."""
-def productosDiccionario()
+def productosDiccionario():
 
 
 def limpiar_consola():
