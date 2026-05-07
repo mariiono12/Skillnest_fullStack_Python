@@ -43,13 +43,15 @@ class Estudiante:
 #Creación de Objetos (Instancias)
 e1 = Estudiante("Donovan", 4.0)
 e2 = Estudiante("Randy", 7.0)
-
+e3 = Estudiante("Martin", 3.9)
 #Uso de métodos de instancia
 print("== MÉTODO DE INSTANCIA==")
 #Mostrar datos de estudiantes
 e1.mostrar_info()
 print()
 e2.mostrar_info()
+print()
+e3.mostrar_info()
 print()
 
 # Usar atributo de clase
@@ -62,6 +64,7 @@ print()
 print("=== MéTODO DE CLASE ===")
 
 Estudiante.cambiar_colegio("Purkuyen")
+e1.colegio = "VVH" ##Modifica elm atributo de la instancia en la clase
 print(e1.colegio)
 print(e2.colegio)
 print()
@@ -72,6 +75,18 @@ print(f"Total estudiantes: {Estudiante.cantidad_estudiantes()}")
 
 #Método estático
 print("=== MÉTODO ESTÁTICO ===")
+
+print(f"¿{e1.nombre} aprueba?")
+print(Estudiante.aprobar(e1.nota))
+print()
+
+print(f"¿{e2.nombre} aprueba?")
+print(Estudiante.aprobar(e2.nota))
+print()
+
+print(f"¿{e3.nombre} aprueba?")
+print(Estudiante.aprobar(e3.nota))
+print()
 
 ## Función repaso.
 ## Crea una función que valide usuario y contraseña
