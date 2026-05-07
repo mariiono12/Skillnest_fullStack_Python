@@ -12,19 +12,16 @@ def positivo(lista):
         return
     print("El numero es positivo")
 
- 
+
 def Revisar():
     cantidad = int(input("Ingrese una cantidad de números: "))
     lista1 = []
     for i in range(cantidad):
         numeros = int(input("Ingrese un numero: "))
         lista1.append(numeros)
-     
+    
     print(positivo(lista1))
 
-
-''' 6- Crear una función que reciba una lista de edades y clasifique a las personas en tres grupos: menores de edad, adultos y adultos mayores (60+).
- Debe mostrar la cantidad de personas en cada grupo. '''
 
 ''' 6- Crear una función que reciba una lista de edades y clasifique a las personas en tres grupos: menores de edad, adultos y adultos mayores (60+).
  Debe mostrar la cantidad de personas en cada grupo. '''
