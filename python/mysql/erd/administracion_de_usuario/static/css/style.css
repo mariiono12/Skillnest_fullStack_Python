@@ -1,0 +1,86 @@
+/* Configuración General */
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+/* Contenedor Principal (Lado a lado) */
+.container {
+    display: flex;
+    gap: 100px; /* Espacio entre Inicio de sesión y Registro */
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Estructura de cada bloque */
+.caja {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+h1 {
+    align-self: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #000000;
+}
+
+/* Alineación de Labels e Inputs */
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+    gap: 20px;
+}
+
+label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    min-width: 130px; /* Mantiene los labels alineados a la izquierda */
+}
+
+input {
+    width: 200px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 3px solid #000000; /* Borde grueso como el dibujo */
+    outline: none;
+    background-color: #ffffff;
+}
+
+/* Estilo de los Botones con Sombra Maciza */
+button {
+    align-self: center; /* Mueve el botón a la derecha */
+    margin-top: 15px;
+    padding: 5px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    cursor: pointer;
+    position: relative;
+    /* Efecto de sombra negra sólida idéntica a la imagen */
+    box-shadow: 5px 5px 0px #000000; 
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Efecto de presión al hacer clic */
+button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0px #000000;
+}

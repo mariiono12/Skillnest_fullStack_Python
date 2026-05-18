@@ -1,0 +1,33 @@
+<div class="card">
+        <div class="flex-between">
+            <h3>Panel de administración - réplica completa</h3>
+        </div>
+        <div class="auth-row" style="margin-top: 0.5rem;">
+            <div class="auth-col">
+                <h4>Nuevo Usuario</h4>
+                <div class="small-note">https://localhost/usuarios/nuevo</div>
+                <div class="form-group"><label>Nombre</label><input placeholder="Nombre completo"></div>
+                <div class="form-group"><label>E-mail</label><input placeholder="correo@dominio.com"></div>
+                <div class="form-group"><label>Contraseña</label><input type="password" placeholder="********"></div>
+                <div class="form-group"><label>Conf. Contraseña</label><input type="password" placeholder="********"></div>
+                <div class="small-note" style="margin: 0.5rem 0;">Al crear un nuevo usuario se puede elegir qué tipo de usuario crear</div>
+                <button>Crear Usuario</button>
+            </div>
+            <div class="auth-col">
+                <h4>Editar Usuario</h4>
+                <div class="small-note">https://localhost/usuarios/editor</div>
+                <div class="small-note" style="margin-bottom: 0.8rem;">Se muestra la información del usuario a editar.</div>
+                <div class="form-group"><label>Nombre</label><input value="Patricia"></div>
+                <div class="form-group"><label>E-mail</label><input value="patricia@codingdojo.com"></div>
+                <div class="form-group"><label>Contraseña</label><input type="password" placeholder="••••••"></div>
+                <div class="form-group"><label>Conf. Contraseña</label><input type="password" placeholder="••••••"></div>
+                <div class="form-group"><label>Tipo de Usuario</label>
+                    <select><option>Administrador</option><option>Usuario</option></select>
+                </div>
+                <div class="inline-buttons"><button style="background: #3b82f6;">Guardar Cambios</button></div>
+            </div>
+        </div>
+        <div class="alert-info mt-2">
+            <i class="fas fa-database"></i> Interfaz estática – 100% réplica visual. Sin base de datos ni datos dinámicos.
+        </div>
+    </div>
