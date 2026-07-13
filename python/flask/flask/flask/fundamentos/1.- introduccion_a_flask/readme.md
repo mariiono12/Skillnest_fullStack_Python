@@ -1,3 +1,10 @@
+
+Readme.md
+Página
+1
+/
+1
+100 %
 # 🚀 Lección 1 - Introducción a Flask
 
 > **Curso:** Desarrollo Web con Flask desde Cero  
@@ -526,3 +533,4 @@ En esta primera lección hemos comprendido que:
 # 🚀 Próxima Lección
 
 En la siguiente lección prepararemos el entorno de desarrollo e instalaremos Flask para crear nuestra primera aplicación web.
+Mostrando Readme.md.
