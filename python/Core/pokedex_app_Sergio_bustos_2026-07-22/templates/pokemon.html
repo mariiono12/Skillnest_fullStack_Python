@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex - {{ titulo }}</title>
+    <!-- Vinculación estática estricta de Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="pokedex-container">
+        <header class="pokedex-header">
+            <h1 class="pokedex-title">Pokédex</h1>
+            <p class="pokedex-subtitle">{{ titulo }}</p>
+            <div class="pokedex-menu">
+                <a href="/pokemon" class="btn-nav">Ver todos</a>
+                <a href="/pokemon/cantidad/5" class="btn-nav btn-green">Ver 5 primeros</a>
+            </div>
+        </header>
+
+        <!-- Cuadrícula CSS pura sin Bootstrap -->
+        <div class="pokemon-grid">
+            {% for pokemon in lista_pokemon %}
+            <div class="pokemon-card">
+                <!-- ID del Pokémon -->
+                <span class="pokemon-id">#{{ pokemon.id }}</span>
+                
+                <!-- Contenedor de la Imagen -->
+                <div class="pokemon-image-box">
+                    <img src="{{ url_for('static', filename='img/' + pokemon.imagen) }}" alt="{{ pokemon.nombre }}">
+                </div>
+
+                <!-- Datos del Pokémon -->
+                <div class="pokemon-info">
+                    <h3 class="pokemon-name">{{ pokemon.nombre }}</h3>
+                    <span class="pokemon-type">{{ pokemon.tipo }}</span>
+
+                    <div class="pokemon-stats">
+                        <div class="stat-row">
+                            <span class="stat-label">Poder base:</span>
+                            <span class="stat-value">{{ pokemon.poder }}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Altura:</span>
+                            <span class="stat-value">{{ pokemon.altura }}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Peso:</span>
+                            <span class="stat-value">{{ pokemon.peso }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de acción -->
+                <div class="pokemon-footer">
+                    <a href="/pokemon/{{ pokemon.id }}" class="btn-action">Ver detalles</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

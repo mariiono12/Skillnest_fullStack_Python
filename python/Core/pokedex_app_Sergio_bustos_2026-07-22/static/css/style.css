@@ -1,0 +1,211 @@
+/* Estilos Base de la Página */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f4f6f9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+    padding: 40px 20px;
+}
+
+.pokedex-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Encabezado */
+.pokedex-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pokedex-title {
+    color: #ef5350;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.pokedex-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.pokedex-menu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Botones de Navegación Superiores */
+.btn-nav {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #2a75d3;
+    border: 1px solid #2a75d3;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-nav:hover {
+    background-color: #2a75d3;
+    color: #fff;
+}
+
+.btn-nav.btn-green {
+    color: #2e7d32;
+    border-color: #2e7d32;
+}
+
+.btn-nav.btn-green:hover {
+    background-color: #2e7d32;
+    color: #fff;
+}
+
+/* Estructura de la Cuadrícula Receptiva */
+.pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Tarjeta Individual del Pokémon */
+.pokemon-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.pokemon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Etiqueta del ID numérico */
+.pokemon-id {
+    position: absolute;
+    top: 12px;
+    end: 12px;
+    right: 12px;
+    background-color: #212529;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    z-index: 10;
+}
+
+/* Caja de Imagen Controlada Fuerte */
+.pokemon-image-box {
+    background-color: #f8f9fa;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.pokemon-image-box img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.pokemon-card:hover .pokemon-image-box img {
+    transform: scale(1.1);
+}
+
+/* Bloque de Información Texto */
+.pokemon-info {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.pokemon-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #111;
+}
+
+.pokemon-type {
+    display: inline-block;
+    background-color: #e0f7fa;
+    color: #006064;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* Bloque de Estadísticas Internas */
+.pokemon-stats {
+    background-color: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    color: #666;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: #222;
+}
+
+/* Botón de Acción Inferior */
+.pokemon-footer {
+    padding: 0 20px 20px 20px;
+}
+
+.btn-action {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #2a75d3;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-action:hover {
+    background-color: #1b5cb3;
+}
