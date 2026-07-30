@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataformas Digitales</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Iconos-->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+
+<body>
+
+    <main class="viewport-wrapper">
+        <!-- Encabezado Principal -->
+        <header class="page-branding">
+            <h1 class="branding-title"><i class="fa-solid fa-table-cells-large branding-icon"></i> Plataformas Digitales</h1>
+            <p class="branding-lead">Visualización de datos de las principales plataformas digitales</p>
+        </header>
+
+        <!-- Panel de Filtros -->
+        <aside class="control-box">
+            <h3 class="control-box-heading"><i class="fa-solid fa-filter"></i> Filtros y Ordenamiento</h3>
+            <form method="GET" action="/tabla" id="filterForm" class="control-form">
+                <div class="layout-flex-grid">
+                    <div class="field-container">
+                        <label for="pais" class="field-label">Filtrar por país:</label>
+                        <select name="pais" id="pais" class="field-select" onchange="document.getElementById('filterForm').submit()">
+                            <option value="Todos" {% if pais_seleccionado=='Todos' %}selected{% endif %}>Todos los países</option>
+                            {% for pais in paises %}
+                            <option value="{{ pais }}" {% if pais_seleccionado==pais %}selected{% endif %}>{{ pais }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="ordenar" class="field-label">Ordenar por:</label>
+                        <select name="ordenar" id="ordenar" class="field-select" onchange="document.getElementById('filterForm').submit()">
+                            <option value="nombre" {% if ordenar_seleccionado=='nombre' %}selected{% endif %}>Nombre</option>
+                            <option value="fundado" {% if ordenar_seleccionado=='fundado' %}selected{% endif %}>Año Fundación</option>
+                            <option value="pais" {% if ordenar_seleccionado=='pais' %}selected{% endif %}>País</option>
+                        </select>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="direccion" class="field-label">Dirección:</label>
+                        <select name="direccion" id="direccion" class="field-select" onchange="document.getElementById('filterForm').submit()">
+                            <option value="asc" {% if direccion_seleccionada=='asc' %}selected{% endif %}>Ascendente</option>
+                            <option value="desc" {% if direccion_seleccionada=='desc' %}selected{% endif %}>Descendente</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </aside>
+
+        <!-- Tabla de Datos -->
+        <section class="content-table-wrapper">
+            {% if plataformas %}
+            <table class="report-table">
+                <thead class="report-table-header">
+                    <tr>
+                        <th class="report-th">Nombre <i class="fa-solid fa-caret-down"></i></th>
+                        <th class="report-th">Usuarios</th>
+                        <th class="report-th">Año Fundación</th>
+                        <th class="report-th">País</th>
+                        <th class="report-th center-aligned-text">Detalles</th>
+                    </tr>
+                </thead>
+                <tbody class="report-table-body">
+                    {% for item in plataformas %}
+                    <tr class="report-row">
+                        <td class="report-td">
+                            <div class="cell-brand-info">
+                                <img src="{{ item.logo }}" alt="{{ item.nombre }}" class="brand-avatar">
+                                <span class="brand-title-text">{{ item.nombre }}</span>
+                            </div>
+                        </td>
+                        <td class="report-td"><span class="pill-tag pill-tag-accent">{{ item.usuarios }}</span></td>
+                        <td class="report-td">{{ item.fundado }}</td>
+                        <td class="report-td"><span class="pill-tag pill-tag-muted">{{ item.pais }}</span></td>
+                        <td class="report-td center-aligned-text">
+                            <button class="action-trigger-btn" title="Ver detalles">
+                                <i class="fa-solid fa-info"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="report-summary">
+                Mostrando {{ plataformas|length }} plataformas
+            </div>
+            {% else %}
+            <div class="null-state-notice">
+                <p class="null-state-msg">⚠️ No se encontraron resultados para los filtros seleccionados.</p>
+            </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer class="site-base-footer">
+        <p class="footer-primary-text">Visualización de datos desarrollada con Flask y Bootstrap.</p>
+        <p class="footer-secondary-text">Los datos mostrados son ficticios para fines educativos.</p>
+    </footer>
+
+</body>
+
+</html>
