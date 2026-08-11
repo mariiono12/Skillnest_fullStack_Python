@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Catálogo - Mercado de Frutas</title>
+
+    <!-- Bootstrap CSS -->
+
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Hoja de estilos -->
+
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ===================================== -->
+<!-- Barra de navegación                   -->
+<!-- ===================================== -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="{{ url_for('index') }}">
+
+            <i class="bi bi-apple"></i>
+
+            Mercado de Frutas
+
+        </a>
+
+        <div>
+
+            <a class="nav-link text-white d-inline"
+
+               href="{{ url_for('index') }}">
+
+                Inicio
+
+            </a>
+
+            <a class="nav-link text-white d-inline"
+
+               href="{{ url_for('catalogo') }}">
+
+                Catálogo
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- ===================================== -->
+<!-- Encabezado                            -->
+<!-- ===================================== -->
+
+<header class="hero text-center text-white">
+
+    <div class="container">
+
+        <h1>
+
+            Nuestro Catálogo de Frutas
+
+        </h1>
+
+        <p>
+
+            Conoce todas las frutas frescas que tenemos para ti.
+
+        </p>
+
+    </div>
+
+</header>
+
+<!-- ===================================== -->
+<!-- Catálogo                              -->
+<!-- ===================================== -->
+
+<div class="container mt-5">
+
+    <div class="row">
+
+        {% for fruta in frutas %}
+
+        <div class="col-md-3 col-sm-6 mb-4">
+
+            <div class="card fruta-card h-100 shadow-lg">
+
+                <!-- Imagen de la fruta -->
+
+                <img
+
+                src="{{ url_for('static', filename='images/' + fruta.imagen) }}"
+
+                class="card-img-top"
+
+                alt="{{ fruta.nombre }}">
+
+                <div class="card-body text-center">
+
+                    <!-- Nombre -->
+
+                    <h5 class="card-title">
+
+                        {{ fruta.nombre }}
+
+                    </h5>
+
+                    <!-- Precio -->
+
+                    <h4 class="text-success fw-bold">
+
+                        ${{ fruta.precio }}
+
+                    </h4>
+
+                    <!-- Descripción -->
+
+                    <p class="card-text">
+
+                        {{ fruta.descripcion }}
+
+                    </p>
+
+                    <!-- Botón para comprar -->
+
+                    <a href="{{ url_for('index') }}"
+
+                       class="btn btn-success w-100">
+
+                        <i class="bi bi-cart-plus"></i>
+
+                        Comprar
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<!-- ===================================== -->
+<!-- Footer                                -->
+<!-- ===================================== -->
+
+<footer class="bg-success text-white text-center mt-5 py-3">
+
+    <div class="container">
+
+        <p class="mb-0">
+
+            &copy; 2026 Mercado de Frutas - Todos los derechos reservados
+
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+
+</html>
