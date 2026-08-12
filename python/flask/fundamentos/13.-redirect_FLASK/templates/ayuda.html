@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda - Conceptos Flask</title>
+</head>
+<body>
+
+    <h1>Guía de Conceptos Básicos</h1>
+
+    <h2>¿Qué es una solicitud POST?</h2>
+    <p>
+        Una solicitud POST se utiliza para enviar datos al servidor.
+        Es el método que usamos en formularios para crear, actualizar o eliminar información.
+    </p>
+    <p>
+        Ejemplo en Flask: @app.route("/registrar", methods=["POST"])
+    </p>
+    <p>
+        Características:
+        - Los datos viajan en el cuerpo de la solicitud
+        - No son visibles en la URL
+        - Se accede a los datos mediante request.form
+    </p>
+
+    <h2>¿Qué es una solicitud GET?</h2>
+    <p>
+        Una solicitud GET se utiliza para solicitar información al servidor.
+        Es el método que usamos para obtener una página o recurso.
+    </p>
+    <p>
+        Ejemplo en Flask: @app.route("/mostrar")
+    </p>
+    <p>
+        Características:
+        - Los datos viajan en la URL (query string)
+        - Son visibles en la barra de direcciones
+        - Se accede a los datos mediante request.args
+    </p>
+
+    <h2>¿Para qué sirve redirect()?</h2>
+    <p>
+        redirect() es una función de Flask que indica al navegador que debe navegar a otra URL.
+    </p>
+    <p>
+        Ejemplo: return redirect("/mostrar")
+    </p>
+    <p>
+        Beneficios:
+        - Evita el reenvío de formularios al recargar la página
+        - Separa el procesamiento de la visualización
+        - Implementa el patrón PRG (Post-Redirect-Get)
+    </p>
+
+    <h2>¿Por qué request.form está vacío después de redirect?</h2>
+    <p>
+        request.form solo contiene datos durante la solicitud POST original.
+    </p>
+    <p>
+        Cuando realizamos redirect(), el navegador inicia una nueva solicitud GET.
+        Esta nueva solicitud no tiene formulario, por lo que request.form está vacío.
+    </p>
+    <p>
+        Los datos del formulario no se transfieren automáticamente en la redirección.
+    </p>
+
+    <h2>Patrón PRG (Post-Redirect-Get)</h2>
+    <p>
+        Formulario → POST /registrar → Procesar datos → redirect() → GET /mostrar → Mostrar resultado
+    </p>
+
+    <br>
+    <a href="{{ url_for('index') }}">Volver al formulario</a> |
+    <a href="{{ url_for('mostrar_producto') }}">Ver resultado</a>
+
+</body>
+</html>
