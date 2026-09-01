@@ -1,54 +1,187 @@
+/* Importar tipografía moderna Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
-    background-color: #f4f6f9;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at 20% 20%, #1a237e 0%, #0d1b2a 40%, #080c14 100%);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Efecto de orbes/burbujas de luz al fondo */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: 0;
+}
+
+body::before {
+    width: 350px;
+    height: 350px;
+    background: #3a86ef;
+    top: 10%;
+    left: 20%;
+    opacity: 0.25;
+}
+
+body::after {
+    width: 300px;
+    height: 300px;
+    background: #e63946;
+    bottom: 15%;
+    right: 25%;
+    opacity: 0.2;
+}
+
+/* Tarjeta Principal (Glassmorphism) */
 .card {
-    border: 1px solid #ccc;
-    padding: 30px;
-    display: inline-block;
-    border-radius: 8px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color: #ffabab;
 }
 
+.title-welcome {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    color: #f1f5f9;
+}
+
+.title-visits {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #ec9898;
+    text-shadow: 0 0 12px rgba(58, 134, 239, 0.5);
+}
+
+.text-sub {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 28px;
+}
+
+.text-sub strong {
+    color: #ffffff;
+}
+
+/* Botones Base */
 .btn {
-    padding: 10px 15px;
-    margin: 5px;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
     cursor: pointer;
+    transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
+}
+
+/* Formulario con Input e Inline Button */
+.input-group {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    margin: 16px 0;
+}
+
+.input-container {
+    position: relative;
+    flex: 1;
+}
+
+.input-container label {
+    position: absolute;
+    top: -9px;
+    left: 12px;
+    background: #111a2e;
+    padding: 0 6px;
+    font-size: 0.75rem;
+    color: #94a3b8;
     border-radius: 4px;
-    font-weight: bold;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: white;
-    border: none;
-}
-
-.btn-warning {
-    background-color: #ffc107;
-    color: black;
-    border: none;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-}
-
-form {
-    margin: 10px 0;
 }
 
 input[type="number"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 80px;
+    width: 100%;
+    padding: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: #3a86ef;
+}
+
+input[type="number"]::placeholder {
+    color: #64748b;
+}
+
+/* Estilos de Colores de Botones y Efecto Glow */
+.btn-blue {
+    background-color: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+.btn-blue:hover {
+    background-color: #3b82f6;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-warning {
+    background-color: #f59e0b;
+    color: #0f172a;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+}
+
+.btn-warning:hover {
+    background-color: #fbbf24;
+    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: #dc2626;
+    color: #ffc1c1;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+}
+
+.btn-danger:hover {
+    background-color: #ef4444;
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+    transform: translateY(-2px);
+}
+
+form {
+    margin-bottom: 14px;
 }
