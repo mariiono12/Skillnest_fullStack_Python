@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Visitas</title>
+    <!-- Vinculación del archivo CSS externo -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="card">
+        <h1>Contador de Visitas</h1>
+        <h2>Has visitado esta página {{ session['visitas'] }} veces</h2>
+        <p>El contador se ha reiniciado <strong>{{ session['reinicios'] }}</strong> veces.</p>
+
+        <!-- Bonus de Plata: Botón para sumar 2 a las visitas -->
+        <form action="/sumar_dos" method="POST">
+            <button type="submit" class="btn btn-primary">+2 Visitas</button>
+        </form>
+
+        <!-- Bonus de Oro: Formulario para ingresar un número personalizado -->
+        <form action="/incrementar_personalizado" method="POST">
+            <input type="number" name="cantidad" min="1" placeholder="Ej: 5" required>
+            <button type="submit" class="btn btn-primary">Sumar cantidad</button>
+        </form>
+
+        <!-- Bonus de Plata: Botón para reiniciar a 0 -->
+        <form action="/reset" method="POST">
+            <button type="submit" class="btn btn-warning">Reiniciar Contador</button>
+        </form>
+
+        <br>
+        <!-- Nivel 1: Ruta para destruir la sesión completa -->
+        <a href="/destruir_sesion" class="btn btn-danger">Destruir Sesión</a>
+    </div>
+</body>
+</html>
