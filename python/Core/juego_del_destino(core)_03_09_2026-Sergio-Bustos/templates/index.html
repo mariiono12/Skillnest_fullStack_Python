@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Juego del Destino</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <div class="moon-badge">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="white">
+                    <path d="M12.3 2a10 10 0 0 0 9.7 12.3 10 10 0 1 1-12-12.3z"/>
+                </svg>
+            </div>
+            <h1>El Juego del Destino</h1>
+            <p>Descubre qué te depara el futuro</p>
+        </div>
+        
+        <div class="card-body">
+            <form action="/enviar" method="POST">
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <span class="icon">👤</span>
+                        <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <span class="icon">📅</span>
+                        <input type="number" name="edad" placeholder="Tu edad" required min="1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <span class="icon">🎨</span>
+                        <input type="text" name="color" placeholder="Tu color favorito" required>
+                    </div>
+                    <span class="hint">Ej. rojo, azul, verde, morado, amarillo...</span>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <span class="icon">🐾</span>
+                        <input type="text" name="animal" placeholder="Tu animal favorito" required>
+                    </div>
+                    <span class="hint">Ej. perro, gato, águila, león, delfín...</span>
+                </div>
+
+                <div class="orb-container">
+                    <div class="orb"></div>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    ✏️ Revelar mi destino
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
