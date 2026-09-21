@@ -1,6 +1,13 @@
+-- ==========================================================
+-- CREAR BASE DE DATOS
+-- ==========================================================
 CREATE DATABASE IF NOT EXISTS primera_flask;
+
 USE primera_flask;
 
+-- ==========================================================
+-- CREAR TABLA MASCOTAS
+-- ==========================================================
 CREATE TABLE IF NOT EXISTS mascotas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -10,7 +17,11 @@ CREATE TABLE IF NOT EXISTS mascotas (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO mascotas (nombre, tipo, color) VALUES
+-- ==========================================================
+-- INSERTAR DATOS DE PRUEBA
+-- ==========================================================
+INSERT INTO mascotas (nombre, tipo, color)
+VALUES
     ("Firulais", "Perro", "Café"),
     ("Michi", "Gato", "Negro"),
     ("Luna", "Perro", "Blanco"),
