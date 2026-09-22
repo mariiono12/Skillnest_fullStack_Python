@@ -4,13 +4,30 @@ from mascota import Mascota
 app = Flask(__name__)
 
 # ==========================================================
-# RUTA ACTIVIDAD: Buscar por nombre
+# RUTA PRINCIPAL
+# ==========================================================
+@app.route("/")
+def index():
+    mascotas = Mascota.get_all()
+    return render_template("index.html", mascotas=mascotas)
+
+# ==========================================================
+# RUTA: BUSCAR POR ID
+# ==========================================================
+@app.route("/mascota/<int:id>")
+def mostrar_mascota(id):
+    mascota = Mascota.get_by_id(id)
+
+    if mascota is None:
+        return "Mascota no encontrada", 404
+
+    return render_template("mascota.html", mascota=mascota)
+
+# ==========================================================
+# RUTA ACTIVIDAD: BUSCAR POR NOMBRE
 # ==========================================================
 @app.route("/mascota/nombre/<string:nombre>")
-def buscar_mascota_por_nombre(nombre):
-    """
-    Ejemplo de URL: http://127.0.0.1:5000/mascota/nombre/Firulais
-    """
+def buscar_por_nombre(nombre):
     mascota = Mascota.get_by_name(nombre)
 
     if mascota is None:
@@ -18,19 +35,16 @@ def buscar_mascota_por_nombre(nombre):
 
     return render_template("mascota.html", mascota=mascota)
 
-
 # ==========================================================
-# RUTA DESAFÍO: Buscar por tipo
+# RUTA DESAFÍO: FILTRAR POR TIPO
 # ==========================================================
 @app.route("/mascotas/tipo/<string:tipo>")
-def buscar_mascotas_por_tipo(tipo):
-    """
-    Ejemplo de URL: http://127.0.0.1:5000/mascotas/tipo/Perro
-    """
+def buscar_por_tipo(tipo):
     mascotas = Mascota.get_by_tipo(tipo)
-
     return render_template("index.html", mascotas=mascotas)
 
-
+# ==========================================================
+# ARRANQUE DEL SERVIDOR
+# ==========================================================
 if __name__ == "__main__":
     app.run(debug=True)
