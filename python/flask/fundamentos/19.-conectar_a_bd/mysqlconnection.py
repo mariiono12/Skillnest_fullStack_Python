@@ -30,6 +30,6 @@ class MySQLConnection:
             finally:
                 self.connection.close()
 
-# ⚠️ ASEGÚRATE DE TENER ESTAS LÍNEAS AL FINAL DE MYSQLCONNECTION.PY:
+
 def connectToMySQL(db):
     return MySQLConnection(db)
