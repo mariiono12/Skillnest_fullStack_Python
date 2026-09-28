@@ -1,27 +1,18 @@
--- ==========================================================
--- SELECCIONAR BASE DE DATOS
--- ==========================================================
+CREATE DATABASE IF NOT EXISTS esquema_usuarios;
 
 USE esquema_usuarios;
 
-
--- ==========================================================
--- VER ESTRUCTURA DE LA TABLA
--- ==========================================================
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 
 DESCRIBE usuarios;
 
-
--- ==========================================================
--- VER PROPIEDADES COMPLETAS DE LA TABLA
--- ==========================================================
-
 SHOW CREATE TABLE usuarios;
 
-
--- ==========================================================
--- CONSULTAR USUARIOS
--- ==========================================================
-
-SELECT *
-FROM usuarios;
+SELECT * FROM usuarios;
