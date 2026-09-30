@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Usuario</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+
+            <div class="mb-4">
+                <h1 class="mb-1">Usuario {{ usuario.id }}</h1>
+                <p class="text-muted">Información completa del usuario.</p>
+            </div>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <p class="mb-2"><strong>Nombre Completo:</strong> {{ usuario.nombre }} {{ usuario.apellido }}</p>
+                    <p class="mb-2"><strong>E-mail:</strong> {{ usuario.email }}</p>
+                    <p class="mb-2"><strong>Fecha Creación:</strong> {{ usuario.created_at }}</p>
+                    <p class="mb-4"><strong>Fecha Actualización:</strong> {{ usuario.updated_at }}</p>
+
+                    <div class="d-flex gap-2">
+                        <a href="{{ url_for('editar_usuario', id=usuario.id) }}" class="btn btn-warning">Editar</a>
+                        <a href="{{ url_for('borrar_usuario', id=usuario.id) }}" class="btn btn-danger">Borrar</a>
+                        <a href="{{ url_for('usuarios') }}" class="btn btn-outline-secondary">Volver</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
