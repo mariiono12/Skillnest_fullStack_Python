@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="bg-white p-4 rounded shadow-sm mb-4">
+    <div class="row">
+        <div class="col-md-3 text-center mb-3 mb-md-0">
+            <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="height: 220px;">
+                <i class="bi bi-image text-secondary display-1"></i>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h2 class="fw-bold mb-3">{{ book.title }}</h2>
+            <p class="mb-1"><strong>Autor:</strong> {{ book.author }}</p>
+            <p class="mb-1"><strong>Género:</strong> {{ book.genre }}</p>
+            <p class="mb-1"><strong>Publicado por:</strong> {{ book.creator_name }}</p>
+            <p class="mb-3"><strong>Fecha:</strong> {{ book.release_date.strftime('%Y-%m-%d') }}</p>
+
+            {% if not is_fav and book.user_id != session['user_id'] %}
+                <a href="/libros/favorito/{{ book.id }}" class="btn btn-outline-dark rounded-pill">
+                    <i class="bi bi-heart"></i> Agregar a Favoritos
+                </a>
+            {% endif %}
+            
+            <div class="mt-4">
+                <strong>Descripción:</strong>
+                <p class="mt-1 text-secondary">{{ book.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white p-4 rounded shadow-sm">
+    <h5 class="fw-bold mb-3">Usuarios que agregaron este libro a favoritos ({{ fav_users|length }})</h5>
+    <ul class="list-unstyled">
+        {% for u in fav_users %}
+            <li class="py-1 text-secondary"><i class="bi bi-person-circle me-2"></i> {{ u.first_name }} {{ u.last_name }}</li>
+        {% else %}
+            <li class="text-muted">Ningún usuario ha marcado este libro como favorito aún.</li>
+        {% endfor %}
+    </ul>
+    <div class="mt-4">
+        <a href="/libros" class="text-decoration-none">← Volver a Mis Libros</a>
+    </div>
+</div>
+{% endblock %}

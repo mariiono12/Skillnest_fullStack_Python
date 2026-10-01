@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Mis Libros</h2>
+    <a href="/libros/nuevo" class="btn btn-primary">+ Nuevo Libro</a>
+</div>
+
+<!-- Mis Libros Table -->
+<div class="table-responsive bg-white rounded shadow-sm mb-5 p-3">
+    <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Género</th>
+                <th>Fecha</th>
+                <th>Favoritos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in my_books %}
+            <tr>
+                <td class="fw-bold">{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.genre }}</td>
+                <td>{{ book.release_date.strftime('%Y-%m-%d') }}</td>
+                <td><span class="badge bg-secondary">{{ book.favorites_count }}</span></td>
+                <td>
+                    <a href="/libros/{{ book.id }}" class="btn btn-sm btn-link p-0 text-decoration-none me-2">Ver</a>
+                    <a href="/libros/editar/{{ book.id }}" class="btn btn-sm btn-link p-0 text-decoration-none me-2">Editar</a>
+                    <a href="/libros/eliminar/{{ book.id }}" class="btn btn-sm btn-link p-0 text-danger text-decoration-none" onclick="return confirm('¿Seguro que deseas borrar este libro?')">Borrar</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6" class="text-center text-muted">Aún no has creado ningún libro.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Libros de la Comunidad -->
+<h2 id="comunidad" class="mb-3">Libros de la Comunidad</h2>
+<div class="table-responsive bg-white rounded shadow-sm p-3">
+    <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Género</th>
+                <th>Publicado por</th>
+                <th>Favoritos</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in community_books %}
+            <tr>
+                <td class="fw-bold">{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.genre }}</td>
+                <td>{{ book.creator_name }}</td>
+                <td><span class="badge bg-secondary">{{ book.favorites_count }}</span></td>
+                <td>
+                    <a href="/libros/{{ book.id }}" class="btn btn-sm btn-link p-0 text-decoration-none">Ver</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6" class="text-center text-muted">No hay libros de la comunidad disponibles.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
