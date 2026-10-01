@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-4">
+    <div class="container mt-4">
+        <div class="row justify-content-center g-5">
+            
+            <!-- Columna Izquierda: Registro -->
+            <div class="col-md-5">
+                <h2 class="fw-bold mb-4">Registro</h2>
+
+                {% with messages = get_flashed_messages(category_filter=['register_error']) %}
+                    {% if messages %}
+                        <div class="alert alert-danger py-2 mb-3">
+                            {% for msg in messages %}
+                                <div><small>• {{ msg }}</small></div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <form action="/register" method="POST">
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-4 col-form-label fw-semibold">Nombre</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="first_name" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-4 col-form-label fw-semibold">Apellido</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="last_name" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-4 col-form-label fw-semibold">E-mail</label>
+                        <div class="col-sm-8">
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-4 col-form-label fw-semibold">F. Nacimiento</label>
+                        <div class="col-sm-8">
+                            <input type="date" name="birthday" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-4 col-form-label fw-semibold">Contraseña</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mb-4 align-items-center">
+                        <label class="col-sm-4 col-form-label fw-semibold">Conf. Contraseña</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="confirm_password" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-dark px-4 fw-bold shadow-sm">Registrar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Columna Derecha: Inicio de Sesión -->
+            <div class="col-md-5">
+                <h2 class="fw-bold mb-4">Inicio de Sesión</h2>
+
+                {% with messages = get_flashed_messages(category_filter=['login_error']) %}
+                    {% if messages %}
+                        <div class="alert alert-danger py-2 mb-3">
+                            {% for msg in messages %}
+                                <div><small>• {{ msg }}</small></div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+
+                <form action="/login" method="POST">
+                    <div class="row mb-3 align-items-center">
+                        <label class="col-sm-4 col-form-label fw-semibold">E-mail</label>
+                        <div class="col-sm-8">
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mb-4 align-items-center">
+                        <label class="col-sm-4 col-form-label fw-semibold">Contraseña</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-dark px-4 fw-bold shadow-sm">Iniciar Sesión</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
