@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripciones - Muchos a Muchos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <h1 class="mb-4">Inscripción de Cursos</h1>
+
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+        {% if mensajes %}
+            {% for categoria, mensaje in mensajes %}
+                <div class="alert alert-{{ categoria }}">
+                    {{ mensaje }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="card p-4 mb-4 shadow-sm">
+        <h2>Inscribir</h2>
+        <form action="/inscribir" method="POST">
+            <div class="mb-3">
+                <label for="estudiante_id" class="form-label">Estudiante:</label>
+                <select name="estudiante_id" id="estudiante_id" class="form-select" required>
+                    <option value="">-- Selecciona un estudiante --</option>
+                    {% for estudiante in estudiantes %}
+                        <option value="{{ estudiante.id_estudiante }}">
+                            {{ estudiante.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="curso_id" class="form-label">Curso:</label>
+                <select name="curso_id" id="curso_id" class="form-select" required>
+                    <option value="">-- Selecciona un curso --</option>
+                    {% for curso in cursos %}
+                        <option value="{{ curso.id_curso }}">
+                            {{ curso.nombre_curso }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Inscribir</button>
+        </form>
+    </div>
+
+    <div class="card p-4 shadow-sm">
+        <h2>Inscripciones Actuales</h2>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Estudiante</th>
+                    <th>Curso</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in inscripciones %}
+                    <tr>
+                        <td>{{ item.estudiante }}</td>
+                        <td>{{ item.curso }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="2">No hay inscripciones registradas.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
