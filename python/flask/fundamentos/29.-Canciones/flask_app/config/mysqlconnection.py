@@ -4,8 +4,8 @@ class MySQLConnection:
     def __init__(self, db):
         self.connection = pymysql.connect(
             host="localhost",
-            user="root",
-            password="1234",  # Ajusta tu contraseña si es necesario
+            user="root",        # Cambia por tu usuario de MySQL si es necesario
+            password="12345",        # Cambia por tu contraseña de MySQL si es necesario
             database=db,
             charset="utf8mb4",
             cursorclass=pymysql.cursors.DictCursor,
@@ -19,10 +19,10 @@ class MySQLConnection:
                 if query.strip().lower().startswith("select"):
                     return cursor.fetchall()
                 if query.strip().lower().startswith("insert"):
-                    return cursor.lastrowid or cursor.rowcount
+                    return cursor.lastrowid
                 return cursor.rowcount
             except Exception as e:
-                print("Something went wrong:", e)
+                print("Error en la consulta:", e)
                 return False
             finally:
                 self.connection.close()
