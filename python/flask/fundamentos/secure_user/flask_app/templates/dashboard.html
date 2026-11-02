@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<div class="card shadow border-0">
+    <div class="card-body p-4">
+        <h1 class="mb-3">Bienvenido, {{ usuario.nombre }} {{ usuario.apellido }}!</h1>
+        <p class="lead">Has iniciado sesión correctamente de forma segura.</p>
+        <hr>
+        <dl class="row">
+            <dt class="col-sm-3">ID de Usuario:</dt>
+            <dd class="col-sm-9">{{ usuario.id }}</dd>
+
+            <dt class="col-sm-3">Email:</dt>
+            <dd class="col-sm-9">{{ usuario.email }}</dd>
+        </dl>
+        <a href="/logout" class="btn btn-danger">Cerrar sesión</a>
+    </div>
+</div>
+{% endblock %}
