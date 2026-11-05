@@ -2,7 +2,7 @@ import re
 from flask import flash
 from flask_app.config.mysqlconnection import connectToMySQL
 
-# Expresión regular para validar formato básico de e-mail
+# Expresión regular para validar el formato del e-mail
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
 
 class Usuario:
@@ -30,7 +30,7 @@ class Usuario:
         if not usuario["email"].strip():
             flash("El e-mail es obligatorio.", "danger")
             es_valido = False
-        # Validar formato de e-mail[cite: 3, 4]
+        # Validar formato de e-mail
         elif not EMAIL_REGEX.match(usuario["email"].strip()):
             flash("E-mail inválido.", "danger")
             es_valido = False
@@ -39,7 +39,7 @@ class Usuario:
 
     @classmethod
     def email_existe(cls, email):
-        # BONUS: Validar si el e-mail ya existe en la base de datos[cite: 3]
+        # BONUS: Validar si el e-mail ya existe en la base de datos
         query = "SELECT id FROM usuarios WHERE email = %(email)s;"
         resultados = connectToMySQL("esquema_usuarios").query_db(query, {"email": email})
         return bool(resultados)

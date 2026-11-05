@@ -13,7 +13,7 @@ def usuarios():
 
 @app.route("/usuarios/nuevo")
 def nuevo_usuario():
-    # BONUS: Recuperar datos guardados en session si ocurrió un error previo[cite: 3]
+    # BONUS: Recuperar datos guardados temporalmente en session si los hay
     datos_formulario = session.pop("datos_formulario", {})
     return render_template("nuevo_usuario.html", datos=datos_formulario)
 
@@ -25,18 +25,18 @@ def crear_usuario():
         "email": request.form.get("email", "").strip()
     }
 
-    # 1. Validar campos obligatorios y formato de e-mail[cite: 3, 4]
+    # 1. Validar campos obligatorios y formato de e-mail
     if not Usuario.validar_usuario(data):
-        session["datos_formulario"] = data  # Guardar temporalmente en sesión[cite: 3]
+        session["datos_formulario"] = data
         return redirect(url_for("nuevo_usuario"))
 
-    # 2. BONUS: Verificar que el e-mail no esté registrado[cite: 3]
+    # 2. Verificar que el e-mail no esté registrado
     if Usuario.email_existe(data["email"]):
         flash("El e-mail ingresado ya está registrado.", "danger")
-        session["datos_formulario"] = data  # Guardar temporalmente en sesión[cite: 3]
+        session["datos_formulario"] = data
         return redirect(url_for("nuevo_usuario"))
 
-    # 3. Guardar registro si todo es correcto[cite: 3, 4]
+    # 3. Guardar registro si todo es correcto
     resultado = Usuario.save(data)
 
     if resultado is False:
@@ -44,7 +44,6 @@ def crear_usuario():
         session["datos_formulario"] = data
         return redirect(url_for("nuevo_usuario"))
 
-    # Éxito: limpiar sesión y redirigir a la página principal[cite: 3, 4]
     session.pop("datos_formulario", None)
     flash("Usuario creado exitosamente.", "success")
     return redirect(url_for("usuarios"))

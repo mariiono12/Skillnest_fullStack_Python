@@ -1,27 +1,36 @@
-CREATE DATABASE IF NOT EXISTS esquema_canciones;
-USE esquema_canciones;
+CREATE SCHEMA IF NOT EXISTS `esquema_canciones` DEFAULT CHARACTER SET utf8 ;
+USE `esquema_canciones` ;
 
-CREATE TABLE IF NOT EXISTS usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+-- Tabla Usuarios
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `contrasena` VARCHAR(45) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS canciones (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
-    artista VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+-- Tabla Canciones
+CREATE TABLE IF NOT EXISTS `canciones` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `titulo` VARCHAR(45) NOT NULL,
+  `artista` VARCHAR(45) NOT NULL,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS favoritos (
-    usuario_id INT NOT NULL,
-    cancion_id INT NOT NULL,
-    PRIMARY KEY (usuario_id, cancion_id),
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
-    FOREIGN KEY (cancion_id) REFERENCES canciones(id) ON DELETE CASCADE
-);
+-- Tabla Intermedia Favoritos (Relación Muchos a Muchos N:M)
+CREATE TABLE IF NOT EXISTS `favoritos` (
+  `usuario_id` INT NOT NULL,
+  `cancion_id` INT NOT NULL,
+  PRIMARY KEY (`usuario_id`, `cancion_id`),
+  CONSTRAINT `fk_favoritos_usuarios`
+    FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)
+    ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_favoritos_canciones`
+    FOREIGN KEY (`cancion_id`) REFERENCES `canciones` (`id`)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB;

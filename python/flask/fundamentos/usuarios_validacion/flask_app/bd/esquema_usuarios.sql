@@ -10,9 +10,10 @@ CREATE TABLE IF NOT EXISTS usuarios (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Registros de prueba opcionales
+-- Registros iniciales de prueba (opcionales)
 INSERT INTO usuarios (nombre, apellido, email)
 VALUES
     ("Soraya", "Montenegro", "soraya@email.com"),
     ("Armando", "Mendoza", "armando@email.com"),
-    ("Mia", "Colucci", "mia@email.com");
+    ("Mia", "Colucci", "mia@email.com"),
+    ("Rubi", "Perez", "rubi@email.com");
