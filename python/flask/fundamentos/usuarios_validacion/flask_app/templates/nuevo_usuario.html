@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-light">
+<div class="container py-5" style="max-width: 550px;">
+
+    <h1 class="mb-4 fw-bold">Crear nuevo usuario</h1>
+
+    <!-- Mensajes Flash de Error -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="text-danger fw-bold mb-2">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('crear_usuario') }}" method="POST" class="mt-3">
+        <div class="mb-3">
+            <label for="nombre" class="form-label fw-bold">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" class="form-control border-dark" value="{{ datos.get('nombre', '') }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="apellido" class="form-label fw-bold">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" class="form-control border-dark" value="{{ datos.get('apellido', '') }}">
+        </div>
+
+        <div class="mb-4">
+            <label for="email" class="form-label fw-bold">E-mail</label>
+            <input type="text" id="email" name="email" class="form-control border-dark" value="{{ datos.get('email', '') }}">
+        </div>
+
+        <button type="submit" class="btn btn-outline-dark fw-bold px-4">Crear</button>
+    </form>
+
+</div>
+</body>
+</html>
